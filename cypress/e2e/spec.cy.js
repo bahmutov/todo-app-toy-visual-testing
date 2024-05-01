@@ -22,9 +22,18 @@ it('adds and removes todos', () => {
     .check()
     .should('be.checked')
   cy.get('#items-left').should('have.text', '2')
+
+  cy.imageDiff('01-completed-todo')
+
   cy.get('#completed').click()
   cy.get('#completed').should('have.class', 'on')
   cy.get('[data-cy=todo]:visible')
     .should('have.length', 1)
     .contains('find the secret')
+
+  cy.imageDiff('02-completed-view')
+
+  cy.get('button img[alt="Change color theme"]').click()
+
+  cy.imageDiff('03-night-view')
 })
