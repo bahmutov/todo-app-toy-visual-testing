@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/bahmutov/todo-app-toy-visual-testing#readme",
   "devDependencies": {
+    "@bahmutov/cypress-toy-visual-testing": "^1.0.0",
     "cypress": "^13.8.1",
     "prettier": "^3.2.5",
     "serve": "^14.2.3",

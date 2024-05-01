@@ -12,8 +12,11 @@ it('adds and removes todos', () => {
   )
   cy.get('[data-cy="add-todo"]').clear()
   cy.get('[data-cy="add-todo"]').type('use Studio{enter}')
+  cy.get('[data-cy=todo]').should('have.length', 3)
+
+  cy.imageDiff('00-added-todos')
+
   cy.get('[data-cy=todo]')
-    .should('have.length', 3)
     .eq(1)
     .find('.cb-input')
     .check()
