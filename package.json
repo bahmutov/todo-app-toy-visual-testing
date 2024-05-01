@@ -1,0 +1,31 @@
+{
+  "name": "todo-app-toy-visual-testing",
+  "version": "1.0.0",
+  "description": "> This is a single vanilla JavaScript TodoApp to showcase [cyclope plugin](https://github.com/bahmutov/cyclope)",
+  "private": true,
+  "scripts": {
+    "test": "cypress run",
+    "start": "serve -p 3777 public",
+    "dev": "start-test 3777 cy:open",
+    "cy:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/todo-app-toy-visual-testing.git"
+  },
+  "keywords": [
+    "cypress-example"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/todo-app-toy-visual-testing/issues"
+  },
+  "homepage": "https://github.com/bahmutov/todo-app-toy-visual-testing#readme",
+  "devDependencies": {
+    "cypress": "^13.8.1",
+    "prettier": "^3.2.5",
+    "serve": "^13.0.2",
+    "start-server-and-test": "^2.0.3"
+  }
+}
