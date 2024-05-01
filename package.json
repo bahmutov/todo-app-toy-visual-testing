@@ -7,7 +7,9 @@
     "test": "cypress run",
     "start": "serve -p 3777 public",
     "dev": "start-test 3777 cy:open",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "ci": "start-test 3777 cy:run"
   },
   "repository": {
     "type": "git",
