@@ -1,14 +1,14 @@
 /// <reference types="cypress-axe" />
 
-it('has good text contrast', () => {
+it('uses application CSS styles', () => {
   cy.visit('/')
-  cy.imageDiff('day')
-  // start the a11y checks using cypress-axe plugin
-  // https://github.com/component-driven/cypress-axe
-  cy.injectAxe()
-  cy.checkA11y()
-  cy.get('button img[alt="Change color theme"]').click()
-  cy.imageDiff('night')
-  // check the a11y again
-  cy.checkA11y()
+  cy.get('input#addt').type('hello{enter}')
+  cy.get('[data-cy="todo"]')
+    .should('have.length', 1)
+    .first()
+    .find('input:checkbox')
+    .check()
+  cy.contains('button', 'Completed').click()
+  cy.contains('#items-left', '0')
+  cy.get('button [alt="Change color theme"]').click()
 })
