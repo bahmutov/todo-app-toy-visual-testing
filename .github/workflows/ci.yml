@@ -37,7 +37,9 @@ jobs:
         id: e2e
         with:
           start: npm start
-          record: false
+          record: true
+          # render the full runner UI even when recording Test Replays
+          command: npx cypress run --record --runner-ui
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
