@@ -37,9 +37,6 @@ jobs:
         id: e2e
         with:
           start: npm start
-          record: true
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
       # set the final visual status for the current commit
       # using myrotvorets/set-commit-status-action action
