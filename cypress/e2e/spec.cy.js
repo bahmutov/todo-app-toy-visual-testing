@@ -9,6 +9,9 @@ it('takes an image diff of a tall page', () => {
   })
   // confirm there are 20 todos on the page
   cy.get('[data-cy=todo]').should('have.length', 20)
-  // use image diff assertion
+  // use image diff assertion to compare the entire page
   cy.imageDiff('20-todos')
+  // use image diff assertion to compare just
+  // the visible part of the page
+  cy.imageDiff('20-todos-visible', { capture: 'viewport' })
 })
