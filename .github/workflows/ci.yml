@@ -37,7 +37,7 @@ jobs:
         id: e2e
         with:
           start: npm start
-          record: true
+          record: false
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
