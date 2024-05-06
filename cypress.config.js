@@ -5,6 +5,7 @@ const {
 } = require('@bahmutov/cypress-toy-visual-testing/dist/plugin/setup')
 
 module.exports = defineConfig({
+  projectId: '8ho7dz',
   fixturesFolder: false,
   e2e: {
     setupNodeEvents(on, config) {
