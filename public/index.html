@@ -42,61 +42,53 @@
     ></script>
   </head>
   <body class="light">
-    <aside class="left">
-      <h1>Todo App</h1>
-      <div>🧸 Visual testing</div>
-    </aside>
-    <div class="right">
-      <div class="content">
-        <header class="card">
-          <h1>TODO</h1>
-          <button id="theme-switcher">
-            <img
-              src="./assets/images/icon-moon.svg"
-              alt="Change color theme"
-            />
-          </button>
-        </header>
-        <main>
-          <div class="card add">
-            <div class="cb-container">
-              <button id="add-btn">+</button>
-            </div>
-            <div class="txt-container">
-              <label for="addt">Create todo</label>
-              <input
-                type="text"
-                class="txt-input"
-                placeholder="Create a new todo..."
-                spellcheck="false"
-                autocomplete="off"
-                id="addt"
-                data-cy="add-todo"
-              />
-            </div>
-          </div>
-          <ul class="todos"></ul>
-          <div class="card stat">
-            <p class="corner">
-              <span id="items-left">0</span> items left
-            </p>
-            <div class="filter">
-              <button id="all" class="on">All</button>
-              <button id="active">Active</button>
-              <button id="completed">Completed</button>
-            </div>
-            <div class="corner">
-              <button id="clear-completed">
-                Clear Completed
-              </button>
-            </div>
-          </div>
-        </main>
-        <footer>
-          <p>Drag and drop to reorder list</p>
-        </footer>
+    <header class="card">
+      <h1>TODO</h1>
+      <button id="theme-switcher">
+        <img
+          src="./assets/images/icon-moon.svg"
+          alt="Change color theme"
+        />
+      </button>
+    </header>
+    <main>
+      <div class="card add">
+        <div class="cb-container">
+          <button id="add-btn">+</button>
+        </div>
+        <div class="txt-container">
+          <label for="addt">Create todo</label>
+          <input
+            type="text"
+            class="txt-input"
+            placeholder="Create a new todo..."
+            spellcheck="false"
+            autocomplete="off"
+            id="addt"
+            data-cy="add-todo"
+          />
+        </div>
       </div>
-    </div>
+      <ul class="todos"></ul>
+      <div class="card stat">
+        <p class="corner">
+          <span id="items-left">0</span> items left
+        </p>
+        <div class="filter">
+          <button id="all" class="on">All</button>
+          <button id="active">Active</button>
+          <button id="completed">Completed</button>
+        </div>
+        <div class="corner">
+          <button id="clear-completed">
+            Clear Completed
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Drag and drop to reorder list</p>
+    </footer>
     <script src="./js/scripts.js"></script>
   </body>
 </html>
