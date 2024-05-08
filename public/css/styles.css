@@ -66,10 +66,36 @@ img {
 
 body {
   font: var(--fw-normal) var(--base-font) var(--ff-sans);
+  display: flex;
+  flex-direction: row;
+}
+
+.left {
+  width: 200px;
+  min-height: 100vh;
+  height: 100vh;
+  top: 0;
+  background-color: #c27fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  /* add gap between children elements */
+  gap: 2rem;
+}
+
+.right {
+  width: calc(100% - 400px);
   background: var(--clr-page-bg) var(--img-bg) no-repeat 0%
     0% / 100vw 30rem;
   padding-top: 8rem;
-  width: min(85%, 54rem);
+  /* width: min(85%, 54rem); */
+  margin: auto;
+}
+
+.content {
+  width: 80%;
   margin: auto;
 }
 
