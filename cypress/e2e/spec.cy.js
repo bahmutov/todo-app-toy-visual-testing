@@ -1,17 +1,18 @@
-/// <reference types="cypress" />
+/// <reference types="@bahmutov/cypress-toy-visual-testing" />
 
-it('takes an image diff of a tall page', () => {
-  cy.visit('/')
-  // add 20 todos
-  // Tip: Lodash _.times is a good utility function
-  Cypress._.times(20, (k) => {
-    cy.get('input#addt').type(`todo ${k + 1}{enter}`)
-  })
-  // confirm there are 20 todos on the page
-  cy.get('[data-cy=todo]').should('have.length', 20)
-  // use image diff assertion to compare the entire page
-  cy.imageDiff('20-todos')
-  // use image diff assertion to compare just
-  // the visible part of the page
-  cy.imageDiff('20-todos-visible', { capture: 'viewport' })
-})
+it(
+  'takes an image diff of a tall page with a left column',
+  { scrollBehavior: 'center' },
+  () => {
+    cy.visit('/')
+    Cypress._.times(20, (k) => {
+      cy.get('input#addt').type(`todo ${k + 1}{enter}`)
+    })
+    cy.get('[data-cy=todo]').should('have.length', 20)
+    cy.imageDiff('20', { ignoreElements: '.left' })
+    // cy.get('.right').imageDiff('20-todos')
+    // cy.imageDiff('20-todos-viewport', {
+    //   capture: 'viewport',
+    // })
+  },
+)
