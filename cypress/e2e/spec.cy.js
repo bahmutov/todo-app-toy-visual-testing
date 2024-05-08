@@ -25,12 +25,15 @@ it(
     cy.imageDiff('solution-1-ignore-left-column', {
       ignoreElements: '.left',
     })
+
     // Solution 2: take a screenshot of the right column only
     cy.get('.right').imageDiff('solution-2-right-column')
+
     // Solution 3: take a screenshot of the viewport only
     cy.imageDiff('solution-3-viewport-only', {
       capture: 'viewport',
     })
+
     // Solution 4: change the left column CSS
     // to remove the "position: sticky" style
     // Tip: you can set it to "initial" or "inherit"
