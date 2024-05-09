@@ -1,4 +1,6 @@
 /// <reference types="@bahmutov/cypress-toy-visual-testing" />
+/// <reference types="cypress-real-events" />
+import 'cypress-real-events'
 
 it(
   'ignores small differences in the page',
@@ -15,6 +17,7 @@ it(
     // take a snapshot of the page
     // is the image consistent? Especially when running
     // the tests locally on your main display?
-    cy.imageDiff('5-todos')
+    cy.get('body').realHover({ position: 'bottom' })
+    cy.imageDiff('5-todos', { diffPercentage: 0.01 })
   },
 )
