@@ -1,9 +1,7 @@
 /// <reference types="@bahmutov/cypress-toy-visual-testing" />
-/// <reference types="cypress-real-events" />
-import 'cypress-real-events'
 
 it(
-  'ignores small differences in the page',
+  'ignores the text on the page',
   // avoid scrolling the input element all the way
   // to the top of the page when typing new todos
   { scrollBehavior: 'center' },
@@ -13,11 +11,28 @@ it(
     Cypress._.times(5, (k) => {
       cy.get('input#addt').type(`todo ${k + 1}{enter}`)
     })
+    cy.get('input#addt').blur()
     cy.get('[data-cy=todo]').should('have.length', 5)
-    // take a snapshot of the page
-    // is the image consistent? Especially when running
-    // the tests locally on your main display?
-    cy.get('body').realHover({ position: 'bottom' })
-    cy.imageDiff('5-todos', { diffPercentage: 0.01 })
+
+    // take the visual snapshot of the page
+    // with all text hidden by making it transparent
+    const transparentTextStyle = `
+      <style id="__hide_text">
+        body * {
+          color: transparent !important;
+        }
+        ::placeholder {
+          color: transparent !important;
+        }
+      </style>
+    `
+    cy.get('body').invoke('append', transparentTextStyle)
+    cy.imageDiff('styles-without-text')
+
+    // after taking the visual diff, remove the style
+    // to make the text visible again
+    cy.get('style#__hide_text').invoke('remove')
+    // just to confirm, change the added todos text
+    // and see if the image diff fails or not
   },
 )
