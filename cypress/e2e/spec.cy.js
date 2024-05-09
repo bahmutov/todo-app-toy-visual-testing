@@ -16,22 +16,11 @@ it(
 
     // take the visual snapshot of the page
     // with all text hidden by making it transparent
-    const transparentTextStyle = `
-      <style id="__hide_text">
-        body * {
-          color: transparent !important;
-        }
-        ::placeholder {
-          color: transparent !important;
-        }
-      </style>
-    `
-    cy.get('body').invoke('append', transparentTextStyle)
     cy.imageDiff('styles-without-text')
 
     // after taking the visual diff, remove the style
     // to make the text visible again
-    cy.get('style#__hide_text').invoke('remove')
+    //
     // just to confirm, change the added todos text
     // and see if the image diff fails or not
   },
