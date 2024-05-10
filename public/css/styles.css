@@ -72,6 +72,7 @@ body {
 
 .left {
   width: 200px;
+  min-width: 200px;
   min-height: 100vh;
   height: 100vh;
   top: 0;
@@ -96,6 +97,7 @@ body {
 
 .chat {
   width: 200px;
+  min-width: 200px;
   min-height: 100vh;
   height: 100vh;
   top: 0;
