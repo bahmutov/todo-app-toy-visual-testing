@@ -85,12 +85,12 @@ body {
   gap: 2rem;
 }
 
-.right {
+.center {
   width: calc(100% - 400px);
+  min-width: 700px;
   background: var(--clr-page-bg) var(--img-bg) no-repeat 0%
     0% / 100vw 30rem;
   padding-top: 8rem;
-  /* width: min(85%, 54rem); */
   margin: auto;
 }
 
