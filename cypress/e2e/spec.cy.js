@@ -13,14 +13,8 @@ it(
     // Tip: "scrollWidth" is a property of the element
     // Tip 2: the current viewport height is defined in the config object
     // https://on.cypress.io/config
-    cy.get('body')
-      .should('have.prop', 'scrollWidth')
-      .should('be.a', 'number')
-      .then((width) => {
-        cy.viewport(width, Cypress.config('viewportHeight'))
-      })
+    //
     // take an image diff of the entire page
     // do you see the right "Feedback" column?
-    cy.imageDiff('wide-page')
   },
 )
