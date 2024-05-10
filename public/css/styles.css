@@ -94,6 +94,21 @@ body {
   margin: auto;
 }
 
+.chat {
+  width: 200px;
+  min-height: 100vh;
+  height: 100vh;
+  top: 0;
+  background-color: #ff7f7f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  /* add gap between children elements */
+  gap: 2rem;
+}
+
 .content {
   width: 80%;
   margin: auto;
