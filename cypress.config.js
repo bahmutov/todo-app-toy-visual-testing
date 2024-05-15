@@ -9,13 +9,16 @@ module.exports = defineConfig({
   fixturesFolder: false,
   e2e: {
     env: {
+      // the browser window resolution to set
+      // using the plugin cypress-high-resolution
       resolution: 'high',
     },
     setupNodeEvents(on, config) {
       setupVisualTesting(on, config)
 
       // https://github.com/bahmutov/cypress-high-resolution
-      // require('cypress-high-resolution')(on, config)
+      // use the plugin to increase the browser window resolution
+      require('cypress-high-resolution')(on, config)
 
       return config
     },
