@@ -2,7 +2,7 @@
 
 it(
   'takes an image diff of a wide page',
-  { viewportWidth: 1200 },
+  { viewportWidth: 1600 },
   () => {
     cy.visit('/')
     cy.imageDiff('pattern')
