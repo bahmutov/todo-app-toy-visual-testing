@@ -22,5 +22,10 @@ it(
     // take an image diff of the entire page
     // do you see the right "Feedback" column?
     cy.imageDiff('wide-page')
+
+    cy.screenshot('runner', {
+      capture: 'runner',
+      overwrite: true,
+    })
   },
 )
