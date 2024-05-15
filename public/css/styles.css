@@ -76,6 +76,7 @@ body {
   min-height: 100vh;
   height: 100vh;
   top: 0;
+  color: white;
   background-color: #c27fff;
   display: flex;
   flex-direction: column;
@@ -84,6 +85,9 @@ body {
   position: sticky;
   /* add gap between children elements */
   gap: 2rem;
+  background-image: url('../assets/images/fabric.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .center {
@@ -101,6 +105,7 @@ body {
   min-height: 100vh;
   height: 100vh;
   top: 0;
+  color: white;
   background-color: #ff7f7f;
   display: flex;
   flex-direction: column;
@@ -109,6 +114,9 @@ body {
   position: sticky;
   /* add gap between children elements */
   gap: 2rem;
+  background-image: url('../assets/images/fabric.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .content {
