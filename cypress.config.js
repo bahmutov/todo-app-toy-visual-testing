@@ -15,7 +15,7 @@ module.exports = defineConfig({
       setupVisualTesting(on, config)
 
       // https://github.com/bahmutov/cypress-high-resolution
-      // require('cypress-high-resolution')(on, config)
+      require('cypress-high-resolution')(on, config)
 
       return config
     },
