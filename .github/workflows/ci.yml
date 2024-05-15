@@ -37,6 +37,8 @@ jobs:
         id: e2e
         with:
           start: npm start
+        env:
+          DEBUG: cypress-high-resolution
 
       # set the final visual status for the current commit
       # using myrotvorets/set-commit-status-action action
