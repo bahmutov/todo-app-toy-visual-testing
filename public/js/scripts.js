@@ -4,15 +4,23 @@ document.addEventListener('DOMContentLoaded', main)
 /* main() FUNCTION */
 
 function main() {
+  const showNews = Math.random() < 0.5
+  if (showNews) {
+    document.querySelector('.news').style.display = 'block'
+  }
+
   // theme-switcher
   document
     .getElementById('theme-switcher')
     .addEventListener('click', function () {
-      document.querySelector('body').classList.toggle('light')
+      document
+        .querySelector('body')
+        .classList.toggle('light')
       const themeImg = this.children[0]
       themeImg.setAttribute(
         'src',
-        themeImg.getAttribute('src') === './assets/images/icon-sun.svg'
+        themeImg.getAttribute('src') ===
+          './assets/images/icon-sun.svg'
           ? './assets/images/icon-moon.svg'
           : './assets/images/icon-sun.svg',
       )
@@ -20,27 +28,35 @@ function main() {
   // get alltodos and initialise listeners
   addTodo()
   // dragover on .todos container
-  document.querySelector('.todos').addEventListener('dragover', function (e) {
-    e.preventDefault()
-    if (
-      !e.target.classList.contains('dragging') &&
-      e.target.classList.contains('card')
-    ) {
-      const draggingCard = document.querySelector('.dragging')
-      const cards = [...this.querySelectorAll('.card')]
-      const currPos = cards.indexOf(draggingCard)
-      const newPos = cards.indexOf(e.target)
-      if (currPos > newPos) {
-        this.insertBefore(draggingCard, e.target)
-      } else {
-        this.insertBefore(draggingCard, e.target.nextSibling)
+  document
+    .querySelector('.todos')
+    .addEventListener('dragover', function (e) {
+      e.preventDefault()
+      if (
+        !e.target.classList.contains('dragging') &&
+        e.target.classList.contains('card')
+      ) {
+        const draggingCard =
+          document.querySelector('.dragging')
+        const cards = [...this.querySelectorAll('.card')]
+        const currPos = cards.indexOf(draggingCard)
+        const newPos = cards.indexOf(e.target)
+        if (currPos > newPos) {
+          this.insertBefore(draggingCard, e.target)
+        } else {
+          this.insertBefore(
+            draggingCard,
+            e.target.nextSibling,
+          )
+        }
+        const todos = JSON.parse(
+          localStorage.getItem('todos'),
+        )
+        const removed = todos.splice(currPos, 1)
+        todos.splice(newPos, 0, removed[0])
+        localStorage.setItem('todos', JSON.stringify(todos))
       }
-      const todos = JSON.parse(localStorage.getItem('todos'))
-      const removed = todos.splice(currPos, 1)
-      todos.splice(newPos, 0, removed[0])
-      localStorage.setItem('todos', JSON.stringify(todos))
-    }
-  })
+    })
   // add new todos on user input
   const add = document.getElementById('add-btn')
   const txtInput = document.querySelector('.txt-input')
@@ -68,30 +84,40 @@ function main() {
     }
   })
   // filter todo - all, active, completed
-  document.querySelector('.filter').addEventListener('click', function (e) {
-    const id = e.target.id
-    if (id) {
-      document.querySelector('.on').classList.remove('on')
-      document.getElementById(id).classList.add('on')
-      document.querySelector('.todos').className = `todos ${id}`
-    }
-  })
+  document
+    .querySelector('.filter')
+    .addEventListener('click', function (e) {
+      const id = e.target.id
+      if (id) {
+        document.querySelector('.on').classList.remove('on')
+        document.getElementById(id).classList.add('on')
+        document.querySelector('.todos').className =
+          `todos ${id}`
+      }
+    })
   // clear completed
   document
     .getElementById('clear-completed')
     .addEventListener('click', function () {
       deleteIndexes = []
-      document.querySelectorAll('.card.checked').forEach(function (card) {
-        deleteIndexes.push(
-          [...document.querySelectorAll('.todos .card')].indexOf(card),
-        )
-        card.classList.add('fall')
-        card.addEventListener('animationend', function (e) {
-          setTimeout(function () {
-            card.remove()
-          }, 100)
+      document
+        .querySelectorAll('.card.checked')
+        .forEach(function (card) {
+          deleteIndexes.push(
+            [
+              ...document.querySelectorAll('.todos .card'),
+            ].indexOf(card),
+          )
+          card.classList.add('fall')
+          card.addEventListener(
+            'animationend',
+            function (e) {
+              setTimeout(function () {
+                card.remove()
+              }, 100)
+            },
+          )
         })
-      })
       removeManyTodo(deleteIndexes)
     })
 }
@@ -124,7 +150,9 @@ function removeManyTodo(indexes) {
 
 /* addTodo() FUNCTION TO LIST/CREATE TODOS AND ADD EVENT LISTENERS */
 
-function addTodo(todos = JSON.parse(localStorage.getItem('todos'))) {
+function addTodo(
+  todos = JSON.parse(localStorage.getItem('todos')),
+) {
   if (!todos) {
     return null
   }
@@ -149,7 +177,10 @@ function addTodo(todos = JSON.parse(localStorage.getItem('todos'))) {
     // Set attributes
     card.setAttribute('data-cy', 'todo')
     card.setAttribute('draggable', true)
-    img.setAttribute('src', './assets/images/icon-cross.svg')
+    img.setAttribute(
+      'src',
+      './assets/images/icon-cross.svg',
+    )
     img.setAttribute('alt', 'Clear it')
     cbInput.setAttribute('type', 'checkbox')
     // set todo item for card
@@ -168,12 +199,13 @@ function addTodo(todos = JSON.parse(localStorage.getItem('todos'))) {
     })
     // Add click listener to checkbox
     cbInput.addEventListener('click', function () {
-      const correspondingCard = this.parentElement.parentElement
+      const correspondingCard =
+        this.parentElement.parentElement
       const checked = this.checked
       stateTodo(
-        [...document.querySelectorAll('.todos .card')].indexOf(
-          correspondingCard,
-        ),
+        [
+          ...document.querySelectorAll('.todos .card'),
+        ].indexOf(correspondingCard),
         checked,
       )
       checked
@@ -188,18 +220,22 @@ function addTodo(todos = JSON.parse(localStorage.getItem('todos'))) {
       const correspondingCard = this.parentElement
       correspondingCard.classList.add('fall')
       removeTodo(
-        [...document.querySelectorAll('.todos .card')].indexOf(
-          correspondingCard,
-        ),
+        [
+          ...document.querySelectorAll('.todos .card'),
+        ].indexOf(correspondingCard),
       )
-      correspondingCard.addEventListener('animationend', function () {
-        setTimeout(function () {
-          correspondingCard.remove()
-          itemsLeft.textContent = document.querySelectorAll(
-            '.todos .card:not(.checked)',
-          ).length
-        }, 100)
-      })
+      correspondingCard.addEventListener(
+        'animationend',
+        function () {
+          setTimeout(function () {
+            correspondingCard.remove()
+            itemsLeft.textContent =
+              document.querySelectorAll(
+                '.todos .card:not(.checked)',
+              ).length
+          }, 100)
+        },
+      )
     })
     // parent.appendChild(child)
     button.appendChild(img)

@@ -16,10 +16,6 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       setupVisualTesting(on, config)
 
-      // https://github.com/bahmutov/cypress-high-resolution
-      // use the plugin to increase the browser window resolution
-      require('cypress-high-resolution')(on, config)
-
       return config
     },
     baseUrl: 'http://localhost:3777',
