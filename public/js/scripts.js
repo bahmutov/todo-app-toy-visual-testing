@@ -4,11 +4,6 @@ document.addEventListener('DOMContentLoaded', main)
 /* main() FUNCTION */
 
 function main() {
-  const showNews = Math.random() < 0.5
-  if (showNews) {
-    document.querySelector('.news').style.display = 'block'
-  }
-
   // theme-switcher
   document
     .getElementById('theme-switcher')

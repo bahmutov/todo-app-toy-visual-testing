@@ -118,19 +118,6 @@ body {
   margin: auto;
 }
 
-aside.news {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  border: 5px solid rgb(13, 254, 13);
-  color: rgb(13, 254, 13);
-  border-radius: 15px;
-  padding: 5px 10px;
-}
-
-aside.news a {
-  color: rgb(13, 254, 13);
-}
 /* INPUT AND BUTTON */
 
 input,
